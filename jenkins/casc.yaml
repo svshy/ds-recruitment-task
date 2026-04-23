@@ -1,0 +1,32 @@
+jenkins:
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: admin
+          password: admin
+
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+
+unclassified:
+  location:
+    url: http://localhost:8080/
+
+jobs:
+  - script: >
+      pipelineJob('playwright-tests') {
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote {
+                  url('https://github.com/svshy/playwright-test-jenkins.git')
+                }
+              }
+            }
+            scriptPath('jenkins/Jenkinsfile')
+          }
+        }
+      }
