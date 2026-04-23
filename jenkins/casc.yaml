@@ -16,13 +16,13 @@ unclassified:
 
 jobs:
   - script: >
-      pipelineJob('playwright-tests') {
+      pipelineJob('ds-recruitment-task') {
         definition {
           cpsScm {
             scm {
               git {
                 remote {
-                  url('https://github.com/svshy/playwright-test-jenkins.git')
+                  url('https://github.com/svshy/ds-recruitment-task.git')
                 }
               }
             }
