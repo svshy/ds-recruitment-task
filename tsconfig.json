@@ -7,8 +7,11 @@
     "skipLibCheck": true,
     "types": ["@playwright/test", "node"],
     "outDir": "dist",
-    "rootDir": "."
+    "rootDir": ".",
+    "paths": {
+      "@helpers/*": ["./helpers/*"]
+    }
   },
-  "include": ["tests/**/*", "playwright.config.ts"],
+  "include": ["tests/**/*", "playwright.config.ts", "helpers/**/*"],
   "exclude": ["node_modules", "dist"]
 }
