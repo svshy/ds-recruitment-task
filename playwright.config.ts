@@ -7,7 +7,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: [["html", { host: "0.0.0.0", port: 9323 }]],
+  reporter: "html",
   timeout: 60000,
   use: {
     trace: "on-first-retry",
