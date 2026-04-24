@@ -3,16 +3,15 @@ import "tsconfig-paths/register";
 
 export default defineConfig({
   testDir: "./tests",
-  fullyParallel: true,
+  fullyParallel: false,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 1,
   workers: process.env.CI ? 1 : undefined,
-  reporter: "html",
-  timeout: 120000,
+  reporter: [["html", { host: "0.0.0.0", port: 9323 }]],
+  timeout: 60000,
   use: {
     trace: "on-first-retry",
     testIdAttribute: "datatest-id",
-    // channel: "chrome",
   },
 
   projects: [
