@@ -23,7 +23,7 @@ test("Filter by top manufacturer in category with highest product count (CDP)", 
     });
 
   await test.step(`Verify that sum of subcategory product counts matches category product count`, async () => {
-    const subcategoriesProductCount = await productsListPage.getSubcategoriesProductCount();
+    const subcategoriesProductCount = await productsListPage.getTotalSubcategoriesProductCount();
 
     expect
       .soft(
@@ -33,7 +33,7 @@ test("Filter by top manufacturer in category with highest product count (CDP)", 
       .toBe(categoryProductCount);
   });
 
-  await test.step(`Filter products by top manufacturer and verify results`, async () => {
+  await test.step(`Filter products by first manufacturer and verify results`, async () => {
     const manufacturerFilterName = await productsListPage.filterByFirstManufacturer();
     await expect(productsListPage.listingTitle).toHaveText(selectedCategoryName + " " + manufacturerFilterName);
   });

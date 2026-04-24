@@ -2,12 +2,6 @@ import { Locator, Page } from "@playwright/test";
 import { BasePage } from "./BasePage";
 import { getMaxCountAndIndex } from "@helpers/category";
 
-const SELECTORS = {
-  container: "#fulloffer-categories-tabs a",
-  count: ".count",
-  name: ".group-filter-name",
-};
-
 export class CategoriesPage extends BasePage {
   readonly categoriesList: Locator;
   readonly categoriesCounters: Locator;
@@ -16,11 +10,11 @@ export class CategoriesPage extends BasePage {
     super(page);
     this.url = "https://intercars.pl/oferta";
     this.categoriesList = page
-      .locator(SELECTORS.container)
-      .filter({ has: page.locator(SELECTORS.count) })
-      .filter({ has: page.locator(SELECTORS.name) });
-    this.categoriesCounters = this.categoriesList.locator(SELECTORS.count);
-    this.categoriesNames = this.categoriesList.locator(SELECTORS.name);
+      .locator("#fulloffer-categories-tabs a")
+      .filter({ has: page.locator(".count") })
+      .filter({ has: page.locator(".group-filter-name") });
+    this.categoriesCounters = this.categoriesList.locator(".count");
+    this.categoriesNames = this.categoriesList.locator(".group-filter-name");
   }
 
   async clickCategoryWithHighestCount(): Promise<{ categoryName: string; count: number }> {
