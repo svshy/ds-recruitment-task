@@ -28,6 +28,7 @@ The suite covers the following user flow:
 
 ```bash
 npm ci
+npx playwright install
 ```
 
 ---
