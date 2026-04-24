@@ -36,6 +36,7 @@ npm ci
 
 | Command                   | Description                                              |
 | ------------------------- | -------------------------------------------------------- |
+| `npm run build`           | Type-check the project with TypeScript (no emit)         |
 | `npm run test:e2e`        | Run the standard Playwright test (headless)              |
 | `npm run test:e2e:headed` | Run the standard Playwright test in headed mode          |
 | `npm run test:cdp:headed` | Run the CDP test against an already-open Chrome instance |
@@ -62,6 +63,9 @@ To work around this, the CDP spec (`intercars-category-filter-cart.cdp.spec.ts`)
 is not flagged by Cloudflare.
 
 #### Step 1 — Launch Chrome with remote debugging
+
+> **Note:** The paths below are examples only. Replace the Chrome executable path with the actual
+> location on your system, and choose any empty directory for `--user-data-dir`.
 
 **Windows**
 
@@ -98,7 +102,7 @@ npm run test:cdp:headed
 ```
 ├── components/       # Reusable page components (Menu, CartModal, Toast, CookieBanner)
 ├── fixtures/         # Playwright fixture definitions (standard + CDP)
-├── helpers/          # Pure utility functions (price parsing, count helpers)
+├── helpers/          # Pure utility functions (price parsing, count helpers) and shared TypeScript types
 ├── jenkins/          # Jenkins CI configuration (Dockerfile, docker-compose, casc, Jenkinsfile)
 ├── pages/            # Page Object Models
 └── tests/            # Test specs
