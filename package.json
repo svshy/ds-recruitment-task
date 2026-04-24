@@ -4,8 +4,9 @@
   "description": "Playwright E2E test suite for the Intercars.pl online shop",
   "scripts": {
     "build": "tsc --noEmit",
-    "test:cdp": "playwright test tests/intercars-category-filter-cart.cdp.spec.ts --headed",
-    "test:e2e": "playwright test tests/intercars-category-filter-cart.spec.ts --headed"
+    "test:cdp:headed": "playwright test tests/intercars-category-filter-cart.cdp.spec.ts --headed",
+    "test:e2e": "playwright test tests/intercars-category-filter-cart.spec.ts",
+    "test:e2e:headed": "playwright test tests/intercars-category-filter-cart.spec.ts --headed"
   },
   "keywords": [],
   "license": "ISC",
