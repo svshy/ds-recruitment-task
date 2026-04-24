@@ -45,7 +45,7 @@ export const test = base.extend<PagesFixtures>({
   },
   cookieBanner: async ({ cdpPage }, use) => {
     await use(new CookieBanner(cdpPage));
-  }
+  },
 });
 
 export { expect, Locator } from "@playwright/test";
