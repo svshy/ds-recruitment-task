@@ -2,6 +2,11 @@
 
 Playwright E2E test suite for the [Intercars.pl](https://intercars.pl) online shop.
 
+> **⚠ Cloudflare protection:** Intercars.pl blocks requests from Playwright-controlled browsers.
+> Clicking the Cloudflare checkbox in headed mode does not help — it triggers an infinite CAPTCHA
+> loop. **Use `npm run test:cdp:headed`** (see [CDP test](#cdp-test)) to run tests against a
+> regular Chrome instance that bypasses this restriction.
+
 The suite covers the following user flow:
 
 1. Navigate to the homepage and accept the cookie banner.
@@ -34,6 +39,19 @@ npm ci
 | `npm run test:e2e`        | Run the standard Playwright test (headless)              |
 | `npm run test:e2e:headed` | Run the standard Playwright test in headed mode          |
 | `npm run test:cdp:headed` | Run the CDP test against an already-open Chrome instance |
+
+> **Note:** `test:e2e` and `test:e2e:headed` will fail. Intercars.pl is protected by Cloudflare,
+> which blocks requests originating from a Playwright-controlled browser. Manual interaction in
+> the headed window does not help — clicking the Cloudflare checkbox triggers a repeated CAPTCHA
+> loop with no way to pass it. Use `test:cdp:headed` instead (see below).
+
+### Known test failure — subcategory product count assertion
+
+Step 3 of the flow asserts that the sum of all subcategory product counts equals the parent
+category count displayed on the listing page. In practice these numbers do not match on the live
+site. Because this is a data inconsistency on the website rather than a test implementation error, the assertion is implemented
+as a **soft assertion** — the test continues executing the remaining steps but ultimately reports
+a failure at the end due to this mismatch.
 
 ### CDP test
 
