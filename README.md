@@ -29,10 +29,11 @@ npm ci
 
 ## Running tests
 
-| Command            | Description                                              |
-| ------------------ | -------------------------------------------------------- |
-| `npm run test:e2e` | Run the standard Playwright test                         |
-| `npm run test:cdp` | Run the CDP test against an already-open Chrome instance |
+| Command                   | Description                                              |
+| ------------------------- | -------------------------------------------------------- |
+| `npm run test:e2e`        | Run the standard Playwright test (headless)              |
+| `npm run test:e2e:headed` | Run the standard Playwright test in headed mode          |
+| `npm run test:cdp:headed` | Run the CDP test against an already-open Chrome instance |
 
 ### CDP test
 
@@ -69,7 +70,7 @@ search engine selection) before proceeding.
 #### Step 3 — Run the test
 
 ```bash
-npm run test:cdp
+npm run test:cdp:headed
 ```
 
 ---
@@ -99,6 +100,14 @@ docker compose up --build
 ```
 
 Jenkins will be available at `http://localhost:8080` (default credentials: `admin` / `admin`).
+
+On the first run Jenkins may display a **"Customize Jenkins"** screen asking about additional
+plugins — simply close or skip it. After that, a **"Jenkins is ready!"** screen will appear;
+click **"Start using Jenkins"** to proceed to the dashboard.
+
+The dashboard will show a single pre-configured job: **ds-recruitment-task**. Click it, then
+click **"Build Now"** to trigger a run. Once the build finishes, open it from the build history
+and click **"Playwright Test Report"** in the left-hand sidebar to view the full HTML report.
 
 The pipeline (`jenkins/Jenkinsfile`) runs inside the official
 `mcr.microsoft.com/playwright:v1.59.1-noble` Docker image, installs npm dependencies, executes
