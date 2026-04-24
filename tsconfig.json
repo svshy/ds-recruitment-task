@@ -9,9 +9,12 @@
     "outDir": "dist",
     "rootDir": ".",
     "paths": {
-      "@helpers/*": ["./helpers/*"]
+      "@helpers/*": ["./helpers/*"],
+      "@pages/*": ["./pages/*"],
+      "@fixtures/*": ["./fixtures/*"],
+      "@components/*": ["./components/*"]
     }
   },
-  "include": ["tests/**/*", "playwright.config.ts", "helpers/**/*"],
+  "include": ["tests/**/*", "playwright.config.ts", "helpers/**/*", "pages/**/*", "fixtures/**/*", "components/**/*"],
   "exclude": ["node_modules", "dist"]
 }

@@ -1,18 +1,13 @@
 {
   "name": "ds-recruitment-task",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Playwright E2E test suite for the Intercars.pl online shop",
   "scripts": {
     "build": "tsc --noEmit",
-    "test": "playwright test",
-    "test:debug": "playwright test --debug",
-    "test:headed": "playwright test --headed",
-    "test:show-report": "playwright show-report",
-    "test:compose": "docker compose run --rm --service-ports playwright"
+    "test:cdp": "playwright test tests/intercars-category-filter-cart.cdp.spec.ts --headed",
+    "test:e2e": "playwright test tests/intercars-category-filter-cart.spec.ts --headed"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
